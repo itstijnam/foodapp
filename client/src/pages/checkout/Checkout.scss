@@ -1,0 +1,102 @@
+.checkout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background: #f9fafb;
+    min-height: 100vh;
+
+    .cart-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .discount-btn {
+            background: #fef3c7;
+            border: none;
+            padding: 0.6rem 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+
+    .summary {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        height: fit-content;
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .summary-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.95rem;
+                color: #374151;
+
+                &.total {
+                    font-weight: 600;
+                    font-size: 1.05rem;
+                    margin-top: 0.5rem;
+                }
+            }
+
+            .order-btn {
+                margin-top: 1rem;
+                background: #111827;
+                color: white;
+                padding: 0.8rem;
+                border-radius: 0.5rem;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+
+    /* 🔹 Responsive */
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+
+        .cart-section,
+        .summary {
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .checkout {
+            padding: 0.5rem;
+        }
+
+        .summary .summary-box .row {
+            font-size: 0.85rem;
+        }
+
+        .cart-section h2 {
+            font-size: 1rem;
+        }
+    }
+}

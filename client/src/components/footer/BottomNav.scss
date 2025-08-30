@@ -1,0 +1,133 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    // border-top-left-radius: 16px;
+    // border-top-right-radius: 16px;
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 12px;
+        min-width: 60px;
+
+        span {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        svg {
+            color: #9ca3af;
+            transition: all 0.2s ease;
+        }
+
+        &:hover {
+            background-color: #f9fafb;
+
+            svg,
+            span {
+                color: #4f46e5;
+            }
+        }
+
+        &.active {
+            svg {
+                color: #4f46e5;
+            }
+
+            span {
+                color: #4f46e5;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// Animation for active state
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bottom-nav .nav-item.active {
+    animation: pulse 0.3s ease;
+}
+
+// Responsive design
+@media (max-width: 480px) {
+    .bottom-nav {
+        padding: 0.5rem 0;
+
+        .nav-item {
+            padding: 0.5rem;
+            min-width: 50px;
+
+            span {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+    .bottom-nav {
+        background-color: #1f2937;
+        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+
+        .nav-item {
+            &:hover {
+                background-color: #374151;
+            }
+
+            span {
+                color: #d1d5db;
+            }
+
+            svg {
+                color: #9ca3af;
+            }
+        }
+    }
+}
+
+.profileDropdown{
+    position: absolute;
+    top: -2.6rem;
+    border-radius: 0.2rem;
+    background: rgba(255, 255, 255, 0.468);
+    padding: 0.6rem 0.8rem;
+
+    ul{
+        li{
+            background: red;
+            color: white;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.8rem 0 0.8rem 0;
+        }
+    }
+}

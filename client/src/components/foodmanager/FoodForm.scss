@@ -1,0 +1,224 @@
+/* FoodForm.scss */
+
+$bg: #ffffff; // slate-900
+$panel: #494846; // gray-900
+$muted: #94a3b8; // slate-400
+$muted: #eaecef; // slate-400
+$text: #ffffff; // gray-200
+$accent: #4f46e5; // indigo-600
+$accent-2: #22c55e; // green-500
+$danger: #ef4444; // red-500
+$border: rgba(148, 163, 184, 0.2);
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+$radius-xl: 16px;
+$radius-2xl: 20px;
+
+@mixin focus-ring {
+    outline: none;
+    box-shadow:
+        0 0 0 2px rgba($accent, 0.35),
+        0 0 0 6px rgba($accent, 0.15);
+}
+
+.food-form-container {
+    display: grid;
+    place-items: start center;
+    padding: clamp(16px, 3vw, 32px);
+    background: linear-gradient(180deg, rgba(79, 70, 229, 0.07), rgba(0, 0, 0, 0)) $bg;
+    min-height: 100%;
+}
+
+.food-form {
+    width: min(900px, 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)) $panel;
+    border: 1px solid $border;
+    border-radius: $radius-2xl;
+    padding: clamp(16px, 3vw, 28px);
+    box-shadow: $shadow;
+    backdrop-filter: blur(6px);
+    color: $text;
+
+    h3 {
+        font-size: clamp(18px, 2.2vw, 24px);
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin: 0 0 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(148, 163, 184, 0.3), rgba(148, 163, 184, 0));
+            margin-left: 10px;
+        }
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: clamp(12px, 2vw, 18px);
+        margin-bottom: clamp(12px, 2vw, 18px);
+
+        .form-group {
+            grid-column: span 6;
+
+            &.full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 720px) {
+            grid-template-columns: 1fr;
+
+            .form-group {
+                grid-column: 1 / -1 !important;
+            }
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-size: 0.9rem;
+            color: $muted;
+            letter-spacing: 0.2px;
+
+            &::after {
+                // add a subtle separator line under label
+                content: "";
+                display: block;
+                height: 1px;
+                margin-top: 6px;
+                background: linear-gradient(90deg, rgba(148, 163, 184, 0.22), rgba(148, 163, 184, 0));
+            }
+        }
+
+        input,
+        textarea {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid $border;
+            border-radius: $radius-xl;
+            box-sizing: border-box;
+            color: $text;
+            padding: 12px 14px;
+            font-size: 0.98rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.05s ease;
+            width: 100%;
+
+            &::placeholder {
+                color: rgba(229, 231, 235, 0.35);
+            }
+
+            &:hover {
+                border-color: rgba(148, 163, 184, 0.35);
+            }
+
+            &:focus {
+                @include focus-ring;
+                border-color: $accent;
+                transform: translateY(-1px);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 96px;
+        }
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .form-actions {
+        margin-top: clamp(12px, 2.2vw, 20px);
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+
+        button {
+            border: 1px solid transparent;
+            border-radius: $radius-xl;
+            padding: 12px 18px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+
+            &:active {
+                transform: translateY(1px);
+            }
+        }
+
+        .cancel-btn {
+            background: transparent;
+            border-color: $border;
+            color: $muted;
+
+            &:hover {
+                border-color: rgba(148, 163, 184, 0.5);
+                background: rgba(148, 163, 184, 0.06);
+            }
+
+            &:focus {
+                @include focus-ring;
+            }
+        }
+
+        .submit-btn {
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.9), $accent);
+            color: white;
+            box-shadow: 0 8px 18px rgba(79, 70, 229, 0.35);
+
+            &:hover {
+                background: linear-gradient(180deg, rgba(79, 70, 229, 1), #4338ca);
+                box-shadow: 0 10px 22px rgba(79, 70, 229, 0.42);
+            }
+
+            &:focus {
+                @include focus-ring;
+            }
+        }
+    }
+}
+
+/* Optional: helper states */
+.is-invalid {
+    border-color: $danger !important;
+}
+
+.help-text {
+    font-size: 0.85rem;
+    color: $muted;
+    margin-top: 6px;
+}
+
+/* Smooth container entrance */
+.food-form-container,
+.food-form {
+    animation: fadeUp 220ms ease-out both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
