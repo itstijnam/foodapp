@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAppOwner, setAuthUser } from "../../redux/authSlice";
+import { baseUrl } from "../../utils/baseUrl";
 
 
 function Login() {
@@ -27,7 +28,7 @@ function Login() {
         try {
             setLoading(true);
             const res = await axios.post(
-                "http://localhost:3000/user/login",
+                `${baseUrl}/user/login`,
                 {
                     phnumber: phoneNumber,
                     password,

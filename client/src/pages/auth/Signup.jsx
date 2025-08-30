@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Auth.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../utils/baseUrl";
 
 function Signup() {
     const [name, setName] = useState("");
@@ -30,7 +31,7 @@ function Signup() {
 
         try {
             setLoading(true);
-            const res = await axios.post("http://localhost:3000/user/signup", {
+            const res = await axios.post(`${baseUrl}/user/signup`, {
                 person_name: name,
                 phnumber: phoneNumber,
                 email,
