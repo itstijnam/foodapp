@@ -23,7 +23,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // CORS configuration
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-const allowedOrigins = [process.env.FRONTEND_URL, ""];
+const allowedOrigins = [process.env.FRONTEND_URL, "https://camfro.vercel.app"];
 
 const corsOptions = {
   origin: function (origin, callback) {
