@@ -80,7 +80,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <header className="home-header">
-        <h1>Foodie<span>Hub</span></h1>
+        <h1>Cam<span>fro</span></h1>
         <p>Discover delicious meals delivered to your door</p>
       </header>
 

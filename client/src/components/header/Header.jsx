@@ -18,7 +18,7 @@ const Header = () => {
         {/* App Logo/Title */}
         <div className="app-brand">
           <Sparkles size={22} className="sparkle-icon" />
-          <h1>Foodie<span>Hub</span></h1>
+          <h1>Cam<span>fro</span></h1>
         </div>
 
         {/* Search Bar */}
